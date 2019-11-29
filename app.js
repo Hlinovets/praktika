@@ -6,6 +6,10 @@ const urlencodedParser = bodyParser.urlencoded({extended: false});
  app.get("/register", urlencodedParser, function (request, response) {
     response.sendFile(__dirname + "/register.html");
 });
+ app.get("/products/:productId", function (request, response) {
+      response.send("productId: " + request.params["productId"])
+    });
+    
 app.post("/register", urlencodedParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
     console.log(request.body);
