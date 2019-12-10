@@ -6,10 +6,9 @@ database: "test",
   password: "usbw",
 port: "3307"
 });
- connection.query("SELECT * FROM users",
-  function(err, results, fields) {
-    console.log(err);
-    console.log(results); // собственно данные
-    console.log(fields); // мета-данные полей
- });
+ const user = ["Tom", 29];
+const sql = "INSERT INTO users(name, age) VALUES(?, ?)";
+ connection.query(sql, user, function(err, results) {
+    if(err) console.log(err);
+    else console.log("Данные добавлены"); }); 
 connection.end();
