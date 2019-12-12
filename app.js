@@ -6,7 +6,9 @@ database: "test",
   password: "usbw",
 port: "3307"
 }).promise();
-connection.query("SELECT * FROM users")
+const sql = "INSERT INTO users (name, age) VALUES (?, ?)";
+const user = ["Stan", 19];
+connection.query(sql, user)
           .then(result =>{
             console.log(result[0]);
           })
