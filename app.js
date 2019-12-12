@@ -7,9 +7,15 @@ database: "usersdb2",
   password: "usbw",
 port: "3307"
 });
-pool.end(function(err) {
-      if (err) {
-        return console.log(err.message);
-      }
-    });
-    
+// добавление объекта
+const sql = "INSERT INTO users (name, age) VALUES(?, ?) ";
+const data = ["Bill", 25];
+pool.query(sql, data, function(err, results) {
+  if(err) console.log(err);
+  console.log(results);
+});
+// получение объектов
+pool.query("SELECT * FROM users", function(err, results) {
+  if(err) console.log(err);
+  console.log(results);
+});
