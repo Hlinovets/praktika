@@ -7,3 +7,9 @@ database: "usersdb2",
   password: "usbw",
 port: "3307"
 });
+pool.end(function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+    });
+    
