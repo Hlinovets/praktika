@@ -5,15 +5,11 @@ const mysql = require("mysql2");
 database: "test",
   password: "usbw",
 port: "3307"
-}).promise();
-const sql = "INSERT INTO users (name, age) VALUES (?, ?)";
-const user = ["Stan", 19];
-connection.query(sql, user)
-          .then(result =>{
-            console.log(result[0]);
-          })
-          .catch(err =>{
-            console.log(err);
-          });
+});
+connection.query("CREATE DATABASE usersdb2",
+  function(err, results) {
+    if(err) console.log(err);
+    else console.log("База данных создана");
+});
 
 connection.end();
